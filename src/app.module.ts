@@ -24,7 +24,9 @@ import { ConfigModule } from '@nestjs/config';
       password: process.env.DB_PASSWORD,
       database: 'ecommerce',
       entities: [User, Product, Order],
-      synchronize: true,
+      synchronize: true, // A désactiver en production
+      migrations: ['dist/migrations/*.js'], // Ajoute les migrations
+      autoLoadEntities: true,    
     }),
     JwtModule.register({
       secret: process.env.JWT_SECRET,

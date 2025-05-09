@@ -1,17 +1,19 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, UsePipes, ValidationPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { RegisterUserDto } from './dto/register-user.dto';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Post('register')
-  register(@Body() body: { email: string; password: string }) {
+  @UsePipes(new ValidationPipe({ whitelist: true }))
+  register(@Body() body: RegisterUserDto) {
     return this.usersService.register(body.email, body.password);
   }
 
   @Post('login')
-  login(@Body() body: { email: string; password: string }) {
+  login(@Body() body: RegisterUserDto) {
     return this.usersService.login(body.email, body.password);
   }
 }

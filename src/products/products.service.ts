@@ -1,25 +1,30 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { Product } from '../entities/product/product';
 
 @Injectable()
 export class ProductsService {
-  private products: Product[] = []; // Simulé
+  constructor(
+    @InjectRepository(Product)
+    private readonly productRepository: Repository<Product>,
+  ) {}
 
-  findAll() {
-    return this.products;
+  async findAll() {
+    return await this.productRepository.find();
   }
 
-  findOne(id: number) {
-    return this.products.find(product => product.id === id);
+  async findOne(id: number) {
+    return await this.productRepository.findOne({ where: { id } });
   }
 
-  create(productData: Product) {
-    this.products.push(productData);
-    return productData;
+  async create(productData: Partial<Product>) {
+    const newProduct = this.productRepository.create(productData);
+    return await this.productRepository.save(newProduct);
   }
 
-  remove(id: number) {
-    this.products = this.products.filter(product => product.id !== id);
-    return { message: 'Produit supprimé' };
+  async remove(id: number) {
+    await this.productRepository.delete(id);
+    return { message: `Produit avec l'ID ${id} supprimé` };
   }
 }
