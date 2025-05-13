@@ -8,9 +8,10 @@ export class UsersController {
 
   @Post('register')
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  register(@Body() body: RegisterUserDto) {
+  async register(@Body() body: RegisterUserDto) {
+    console.log('Données reçues:', body);
     return this.usersService.register(body.email, body.password);
-  }
+  }  
 
   @Post('login')
   login(@Body() body: RegisterUserDto) {
