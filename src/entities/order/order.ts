@@ -18,4 +18,7 @@ export class Order {
 
   @Column('decimal')
   totalPrice: number;
+
+  @Column({ type: 'varchar', length: 50, default: 'En cours' }) // ✅ Définit un statut par défaut
+  status: string;  
 }

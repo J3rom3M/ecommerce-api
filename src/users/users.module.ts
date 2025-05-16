@@ -6,7 +6,7 @@ import { UsersController } from './users.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from '../auth/jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
-
+import { RolesGuard } from '../common/guards/roles.guard';
 
 console.log('JWT Secret:', process.env.JWT_SECRET);
 console.log('JWT Secret utilisé:', process.env.JWT_SECRET || 'fallback_secret');
@@ -20,7 +20,7 @@ console.log('JWT Secret utilisé:', process.env.JWT_SECRET || 'fallback_secret')
       signOptions: { algorithm: 'HS256', expiresIn: '1h' },
     }),
   ],
-  providers: [UsersService, JwtStrategy],
+  providers: [UsersService, JwtStrategy, RolesGuard],
   controllers: [UsersController],
 })
 export class UsersModule {}

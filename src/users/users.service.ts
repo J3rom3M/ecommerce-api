@@ -47,7 +47,7 @@ export class UsersService {
       }
   
       logger.log(`Connexion réussie pour: ${email}`);
-      return { access_token: this.jwtService.sign({ id: user.id, email: user.email }) };
+      return { access_token: this.jwtService.sign({ id: user.id, email: user.email, role: user.role }) };
     } catch (error) {
       logger.error(`Erreur lors de la connexion de ${email}: ${error.message}`);
       throw error;

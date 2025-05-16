@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, BeforeUpdate, BeforeInsert } from 'typeorm';
 import * as bcrypt from 'bcrypt';
+import { Role } from '../../common/enums/role.enum'; // 🏗️ Import correct
 
 @Entity()
 export class User {
@@ -12,8 +13,8 @@ export class User {
   @Column({ type: 'varchar', length: 255 })
   password: string;
 
-  @Column({ type: 'varchar', length: 50, default: 'user' })
-  role: string;
+  @Column({ type: 'varchar', length: 50, default: Role.USER }) // 🎭 Utilisation de l'enum
+  role: Role;
 
   @BeforeInsert()
   @BeforeUpdate()  

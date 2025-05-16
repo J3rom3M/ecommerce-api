@@ -14,10 +14,13 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   }
 
 async validate(payload: any) {
-  console.log('Payload reçu dans JwtStrategy:', payload);
+  console.log('Payload JWT reçu:', payload);
   const user = await this.usersService.findById(payload.id);
-  if (!user) throw new UnauthorizedException();
-  console.log('Payload JWT reçu:', payload)
-  return { id: payload.id, email: payload.email, role: payload.role }; // ✅ Assurer un typage correct - Retourne l'utilisateur validé
+  if (!user) {
+    console.log('Utilisateur non trouvé pour l’ID:', payload.id);
+    throw new UnauthorizedException();
+  }
+  return { id: payload.id, email: payload.email, role: payload.role };
 }
+
 }
