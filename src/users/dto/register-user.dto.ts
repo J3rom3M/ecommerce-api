@@ -1,13 +1,14 @@
-import { IsEmail, IsString, MinLength } from 'class-validator';
+import { IsEmail, IsString, IsStrongPassword, MinLength } from 'class-validator';
 import { Matches } from 'class-validator';
 
 
 export class RegisterUserDto {
-  @Matches(/^(?=.*[A-Z])(?=.*\d).{6,}$/, { message: 'Le mot de passe doit contenir une majuscule, un chiffre et au moins 6 caractères.' })
   @IsEmail()
   email: string;
 
   @IsString()
+  @IsStrongPassword()
   @MinLength(6)
+  @Matches(/^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{14,}$/, { message: 'Le mot de passe doit contenir une majuscule, un chiffre, un caractère spécial et au moins 14 caractères.' })
   password: string;
 }

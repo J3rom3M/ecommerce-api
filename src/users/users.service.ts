@@ -31,6 +31,10 @@ export class UsersService {
     return null;
   }
 
+  async findById(id: number): Promise<User | null> {
+  return this.userRepository.findOne({ where: { id } });
+}
+
   async login(email: string, password: string) {
     const logger = new Logger('UsersService'); // Instancie le logger
     logger.log(`Tentative de connexion de l'utilisateur: ${email}`);
