@@ -69,8 +69,7 @@ When you're ready to deploy your NestJS application to production, there are som
 
 ## Stay in touch
 
-- Author - [Jérôme Magnier](https://fr.linkedin.com/in/jerome-magnier-
-78120)
+- Author - [Jérôme Magnier](https://fr.linkedin.com/in/jerome-magnier-78120)
 - Website - [Portfolio](https://jerome.magnier.go.zd.fr/)
 
 ## License
