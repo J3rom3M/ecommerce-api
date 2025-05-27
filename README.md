@@ -53,9 +53,11 @@ $ npm run test:cov
 $ npx ts-node src/seeders/product.seed.ts
 ```
 
-## Deployment
+## Docker
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation]
+```bash
+$ docker-composer up -d
+```
 
 ## Stay in touch
 

@@ -3,17 +3,24 @@ services:
   app:
     build: .
     ports:
-      - "3000:3000"
+      - "4000:4000"
     env_file:
       - .env
     depends_on:
-      - db
+      - mariadb
   db:
     image: mariadb:latest
+    container_name: mariadb_container
     restart: always
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: nest_db
+      MYSQL_ROOT_PASSWORD: @ebp78EBP
+      MYSQL_DATABASE: ecommerce
+      MYSQL_USER: root
+      MYSQL_PASSWORD: @ebp78EBP
     ports:
-      - "5432:5432"
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

@@ -1,10 +1,10 @@
 {
   "name": "ecommerce-api",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "0.1.5",
+  "description": "API e-commerce",
+  "author": "Jérôme Magnier",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
