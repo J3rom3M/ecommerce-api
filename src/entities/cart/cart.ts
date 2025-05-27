@@ -2,16 +2,8 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { User } from '../user/user';
 import { Product } from '../product/product';
 
-export enum OrderStatus {
-  PENDING = 'En cours',
-  PAID = 'Payée',
-  SHIPPED = 'Envoyée',
-  DELIVERED = 'Livrée',
-  CANCELED = 'Annulée',
-}
-
 @Entity()
-export class Order {
+export class Cart {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -23,10 +15,4 @@ export class Order {
 
   @Column()
   quantity: number;
-
-  @Column('decimal')
-  totalPrice: number;
-
-  @Column({ type: 'varchar', length: 50, default: 'En cours' }) // ✅ Définit un statut par défaut
-  status: string;  
 }

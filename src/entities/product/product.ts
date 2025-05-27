@@ -25,4 +25,7 @@ export class Product {
   @IsInt()
   @Min(0)
   stock: number;
+
+  @Column()
+  image: string;
 }
