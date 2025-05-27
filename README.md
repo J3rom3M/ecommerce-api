@@ -74,4 +74,4 @@ When you're ready to deploy your NestJS application to production, there are som
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is [MIT licensed](https://github.com/J3rom3M/ecommerce-api/blob/main/LICENSE).
